@@ -11,13 +11,14 @@ function resolve(dir) {
 
 module.exports = {
   entry: {
-    app: './src/index.js'
+    app: './src/index.js',
+    //vendor: ['vue', 'vue-router', './src/components/mdbvue.umd.min.js']
   },
   mode: 'development',
   performance: { hints: false },
   output: {
 	    path: resolve('static'),
-	    publicPath: 'static/',
+	    publicPath: '',
 	    filename: 'js/[name].[chunkhash:5].js',
 	    chunkFilename: "js/[id].[chunkhash:5].js"
   },
@@ -77,7 +78,7 @@ module.exports = {
                 	loader: 'url-loader',
                     options: {
                         limit: 6000,
-                        name: '[name].[hash:6].[ext]'
+                        name: 'font/[name].[hash:6].[ext]'
                     }
                 }
             }
@@ -94,9 +95,20 @@ module.exports = {
 	plugins: [
     	new VueLoaderPlugin(),
     	new MiniCssExtractPlugin({
-    		filename: "[name].css",
-	      	chunkFilename: "[id].css"
+    		filename: "css/[name].min.css",
+	      	chunkFilename: "css/[id].css"
 	    }),
+	    new UglifyJSPlugin({
+	    	uglifyOptions: {
+	            exclude: /node_modules/,
+	            sourceMap: false,
+	            compress: {
+	                warnings: false,
+	                loops: true,
+	                conditionals: true
+	            }
+            }
+        }),
         new webpack.ProvidePlugin({
             _: "lodash",
             Vue: "vue",
@@ -104,7 +116,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: 'src/ejs/index.ejs',
-            filename: '../index.html',
+            filename: './index.html',
             inject: true,
             chunks: ['vendor', 'app'],
             hash: false
@@ -116,18 +128,14 @@ module.exports = {
 			chunks: "all",
 			minChunks: 2,
 			cacheGroups: {
+				
 				 vendor: {
 				 	name: "vendor",
 				 	test: /node_modules/,
 					reuseExistingChunk: true,
 					minChunks: 1,					
 				},
-				styles: {            
-		          name: 'styles',
-		          test: /\.scss|css$/,
-		          chunks: 'all',    // merge all the css chunk to one file
-		          enforce: true
-		        }
+				
 			}
 		}
 	}

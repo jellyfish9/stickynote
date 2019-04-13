@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { mdbContainer, mdbRow, mdbCol, mdbIcon, mdbNavItem, mdbListGroup } from 'mdbvue';
+import { mdbContainer, mdbRow, mdbCol, mdbNavItem, mdbListGroup, mdbNavbarNav, mdbNavbarToggler, mdbIcon, mdbInput } from 'mdbvue';
 
 export default {
   name: 'HomePage',
@@ -45,9 +45,12 @@ export default {
     mdbContainer,
     mdbRow,
     mdbCol,
-    mdbIcon,
     mdbNavItem,
-    mdbListGroup
+    mdbListGroup,
+    mdbNavbarNav,
+    mdbNavbarToggler,
+    mdbIcon,
+    mdbInput
   }
 };
 </script>
