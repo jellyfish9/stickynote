@@ -143,11 +143,15 @@ module.exports = {
 					reuseExistingChunk: true,
 					minChunks: 1,					
 				},
-				
 			}
 		}
-	}
-	
+	},
+	externals: { '$': '$' },
+	devServer: {
+        host: '127.0.0.1',
+        port: 8000
+    }
+            
 }
 
 

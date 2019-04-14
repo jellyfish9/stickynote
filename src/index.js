@@ -29,7 +29,7 @@ var router = new Router({
 
       { path: '/note/edit/:id', name: 'note_edit', component: NoteEdit },
       { path: '/note/add', name: 'note_add', component: NoteAdd },
-      { path: '/note:id', name: 'note_show', component: Note },
+      { path: '/note/:id', name: 'note_show', component: Note },
     {
       path: '/button',
       name: 'buttonPage',

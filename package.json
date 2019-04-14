@@ -5,9 +5,8 @@
   "homepage": "http://www.coolhand.vip",
   "main": "src/index.js",
   "scripts": {
-    "dev": "node build/dev-server.js",
-    "build": "node build/build.js",
-    "hot": "webpack-dev-server --hot --inline --content-base ./"
+    "dev": "webpack-dev-server --hot --inline --content-base ./static",
+    "build": "node build/build.js"
   },
   "keywords": [
     "sticky",
@@ -56,7 +55,8 @@
     "classnames": "^2.2.6",
     "moment": "^2.24.0",
     "popper.js": "^1.14.7",
-    "vue-clickaway": "^2.2.2"
+    "vue-clickaway": "^2.2.2",
+    "zepto": "^1.2.0"
   },
   "author": "王伟",
   "license": "ISC"

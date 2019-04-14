@@ -1,25 +1,23 @@
 <template>
 <mdb-container :fluid="true">
   <mdb-navbar dark color="primary" name="qingu">
-  		<mdb-navbar-nav left>
+  		<mdb-navbar-nav :center="true">
             <mdb-nav-item to="/" :exact="true" waves-fixed><mdb-icon icon="arrow-left" size="2x" color="white"/></mdb-nav-item>
-        </mdb-navbar-nav>
-        <mdb-nav-item waves-fixed><p class="h5 text-center text-white">添加笔记</p></mdb-nav-item>
-        <mdb-navbar-nav right>
+        	<mdb-nav-item waves-fixed><p class="h5 text-center text-white">添加笔记</p></mdb-nav-item>
         	<mdb-nav-item to="/" :exact="true" waves-fixed><mdb-icon icon="home" size="2x" color="white"/></mdb-nav-item>
         </mdb-navbar-nav>
   </mdb-navbar>
 
-  <form class="mt-5">
+  <div class="mt-5">
     
     <div class="grey-text">
-      <mdb-input label="Subject" icon="tag" group type="text" validate error="wrong" success="right"/>
-      <mdb-textarea :rows="8" label="Your message" icon="pencil-alt"/>
+      <mdb-input id="note" label="笔记" icon="tag" group type="text" validate error="wrong" success="right"/>
+      <mdb-textarea :rows="8" label="备注" icon="pencil-alt"/>
     </div>
     <div class="text-center">
-      <mdb-btn outline="secondary">保存</mdb-btn>
+      <mdb-btn outline="secondary" @click="save">保存</mdb-btn>
     </div>
-  </form>
+  </div>
 </mdb-container>
 </template>
 
@@ -40,8 +38,12 @@ export default {
   },
 
   methods:{
-  	save(){
-  		
+  	save(e){
+  		//e.preventDefault()
+  		let data = {note: $('#note').val(), mark: $('textarea').first().val()}
+  		$.post('http://web.mmchong.com', data, function(res) {
+  			console.log(res)
+  		})
   	}
   }
 }
