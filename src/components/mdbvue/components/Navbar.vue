@@ -146,6 +146,7 @@ const Navbar = {
       if (window.innerWidth > 990) return;
       if (e.target.classList.contains('dropdown-toggle')) return;
       if (e.target.tagName === 'INPUT') return;
+      if (typeof this.collapse != 'undefined') {
       this.collapse.classList.add('hide-navbar');
       this.collapse.classList.remove('show-navbar');
       this.collapse.style.overflow = 'hidden';
@@ -153,6 +154,7 @@ const Navbar = {
         this.collapse.classList.add('collapse');
         this.collapse.style.overflow = 'initial';
       }, 300);
+      }
       if (this.animation) {
         this.$refs.animatedIcon.classList.remove('open');
       }

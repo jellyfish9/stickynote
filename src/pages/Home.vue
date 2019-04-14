@@ -1,10 +1,10 @@
 <template>
-<mdb-container>
-  <mdb-navbar style="margin-top: 5px" dark color="primary" name="qingu" href="#">
+<mdb-container :fluid="true">
+  <mdb-navbar dark color="primary" name="qingu" href="#">
   	<mdb-navbar-toggler>
   		<mdb-navbar-nav left>
-            <mdb-nav-item href="#" waves-fixed><mdb-icon icon="pen-square" size="2x"/></mdb-nav-item>
-            <mdb-nav-item href="#" waves-fixed><mdb-icon icon="star" size="2x"/></mdb-nav-item>
+            <mdb-nav-item to="/note/add" waves-fixed><mdb-icon icon="pen-square" size="2x"/></mdb-nav-item>
+            <mdb-nav-item waves-fixed><mdb-icon icon="star" size="2x"/></mdb-nav-item>
         </mdb-navbar-nav>
           <!-- Search form -->
         <form>
@@ -23,6 +23,12 @@
   </mdb-navbar>
   
   <mdb-list-group>
+  		<mdb-nav-item class="list-group-item list-group-item-action" to="/note/1">
+          <h5 class="text-center">
+            session机制
+          </h5>
+        </mdb-nav-item>
+  		
         <mdb-nav-item class="list-group-item list-group-item-action" to="/navigation">
           <h5 class="text-center">
             导航
@@ -66,5 +72,5 @@ export default {
     mdbDropdownMenu,
     mdbDropdownItem
   }
-};
+}
 </script>

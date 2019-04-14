@@ -9,6 +9,9 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
+let prd = false
+const fileName = prd ? 'js/[name].[chunkhash:5].js' : 'js/[name].js'
+
 module.exports = {
   entry: {
     app: './src/index.js',
@@ -19,7 +22,7 @@ module.exports = {
   output: {
 	    path: resolve('static'),
 	    publicPath: '',
-	    filename: 'js/[name].[chunkhash:5].js',
+	    filename: fileName,
 	    chunkFilename: "js/[id].[chunkhash:5].js"
   },
   module: {

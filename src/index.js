@@ -11,6 +11,9 @@ import ButtonPage from './pages/button.vue'
 import TabsPage from './pages/tabs.vue'
 import FormsPage from './pages/forms.vue'
 import NavigationPage from './pages/navigation.vue'
+import Note from './pages/note.vue'
+import NoteAdd from './pages/noteAdd.vue'
+import NoteEdit from './pages/noteEdit.vue'
 //console.log(mdbCol)
 Vue.config.productionTip = false
 Vue.use(Router);
@@ -23,6 +26,10 @@ var router = new Router({
       name: 'home',
       component: HomePage
     },
+
+      { path: '/note/edit/:id', name: 'note_edit', component: NoteEdit },
+      { path: '/note/add', name: 'note_add', component: NoteAdd },
+      { path: '/note:id', name: 'note_show', component: Note },
     {
       path: '/button',
       name: 'buttonPage',
@@ -49,5 +56,6 @@ var router = new Router({
 
 /* eslint-disable no-new */
 new Vue({
-  router,
-}).$mount('#app')
+	router,
+	el: '#app'
+})
