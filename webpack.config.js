@@ -28,7 +28,7 @@ module.exports = {
                 test: /\.css$/,
                 use: [
 					MiniCssExtractPlugin.loader,
-					"css-loader"
+					"css-loader",
 				]
             },
             {
@@ -41,8 +41,9 @@ module.exports = {
             },
             {
                 test: /.vue$/,
+                exclude: /node_modules/,
                 use: 'vue-loader',
-                include: resolve('src/pages'),
+                //include: [resolve('src/pages'), resolve('src/components')]
                                    
             }, {
                 test: /\.js$/,
@@ -88,27 +89,18 @@ module.exports = {
 	    extensions: ['.js', '.vue', '.css'],
 	    alias: {
 	      'vue$': 'vue/dist/vue.esm.js',
-	      //'@': resolve('src/pages'),
-	      'mdbvue$': resolve('src/components/mdbvue.umd.min.js')
+	      //'@': resolve('src/pages'),components
+	      //'mdbvue$': resolve('src/asset/mdbvue.umd.min.js')
+	      'mdbvue$': resolve('src/components/mdbvue/index.js')
 	    }
 	},
 	plugins: [
     	new VueLoaderPlugin(),
     	new MiniCssExtractPlugin({
-    		filename: "css/[name].min.css",
-	      	chunkFilename: "css/[id].css"
+    		filename: "[name].min.css",
+	      	chunkFilename: "[id].css"
 	    }),
-	    new UglifyJSPlugin({
-	    	uglifyOptions: {
-	            exclude: /node_modules/,
-	            sourceMap: false,
-	            compress: {
-	                warnings: false,
-	                loops: true,
-	                conditionals: true
-	            }
-            }
-        }),
+	    
         new webpack.ProvidePlugin({
             _: "lodash",
             Vue: "vue",
@@ -123,6 +115,19 @@ module.exports = {
         }),
     ],
     optimization: {
+    	minimizer: [
+    		new UglifyJSPlugin({
+		    	uglifyOptions: {
+		            exclude: /node_modules/,
+		            sourceMap: false,
+		            compress: {
+		                warnings: false,
+		                loops: true,
+		                conditionals: true
+		            }
+	            }
+	        })
+    	],
 		splitChunks: {
 			name: true,
 			chunks: "all",

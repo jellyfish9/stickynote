@@ -51,7 +51,12 @@
     "webpack": "^4.29.6",
     "webpack-dev-server": "^3.2.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "moment": "^2.24.0",
+    "popper.js": "^1.14.7",
+    "vue-clickaway": "^2.2.2"
+  },
   "author": "王伟",
   "license": "ISC"
 }
