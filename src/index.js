@@ -5,7 +5,6 @@ import './asset/mdb-4.7.6.css'
 
 import Vue from 'vue'
 import Router from 'vue-router'
-//import { mdbCol } from 'mdbvue'
 import HomePage from './pages/home.vue'
 import ButtonPage from './pages/button.vue'
 import TabsPage from './pages/tabs.vue'

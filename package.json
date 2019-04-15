@@ -5,8 +5,8 @@
   "homepage": "http://www.coolhand.vip",
   "main": "src/index.js",
   "scripts": {
-    "dev": "webpack-dev-server --hot --inline --content-base ./static",
-    "build": "node build/build.js"
+    "dev": "node_modules/.bin/webpack-dev-server --hot --inline --content-base ./static",
+    "build": "node_modules/.bin/webpack"
   },
   "keywords": [
     "sticky",
@@ -44,6 +44,7 @@
     "vue": "^2.6.10",
     "vue-hot-reload-api": "^2.2.4",
     "vue-loader": "^15.7.0",
+    "vue-numeric": "^2.3.0",
     "vue-router": "^3.0.2",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",

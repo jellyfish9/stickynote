@@ -41,7 +41,12 @@ export default {
   	save(e){
   		//e.preventDefault()
   		let data = {note: $('#note').val(), mark: $('textarea').first().val()}
-  		$.post('http://web.mmchong.com', data, function(res) {
+		$.ajaxSettings.crossDomain = true
+		/*
+			//headers: {Origin: 'http://note.coolhand.vip'}
+			crossDomain: true
+		}*/
+  		$.post('http://api.coolhand.vip/note_add', data, function(res) {
   			console.log(res)
   		})
   	}
