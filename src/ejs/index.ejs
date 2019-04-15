@@ -12,5 +12,7 @@
 			<router-view></router-view>
 	</div>
  </body>
- <script type="text/javascript" src="js/zepto.min.js"></script>
+ <% for (item of htmlWebpackPlugin.options.customJs) { %>
+<script src="js/<%= item %>"></script>
+<% } %>
 </html>

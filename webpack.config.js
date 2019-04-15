@@ -114,7 +114,8 @@ module.exports = {
             filename: './index.html',
             inject: true,
             chunks: ['vendor', 'app'],
-            hash: false
+            hash: false,
+            customJs: ['zepto.min.js']
         }),
     ],
     optimization: {

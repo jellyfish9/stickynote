@@ -23,32 +23,12 @@
   </mdb-navbar>
   
   <mdb-list-group>
-  		<mdb-nav-item class="list-group-item list-group-item-action" to="/note/1">
+  		<mdb-nav-item v-for="n in notes" class="list-group-item list-group-item-action" :to="'/note/'+n.id">
           <h5 class="text-center">
-            session机制
+            {{n.note}}
           </h5>
         </mdb-nav-item>
-  		
-        <mdb-nav-item class="list-group-item list-group-item-action" to="/navigation">
-          <h5 class="text-center">
-            导航
-          </h5>
-        </mdb-nav-item>
-        <mdb-nav-item class="list-group-item list-group-item-action" to="/tabs">
-          <h5 class="text-center">
-            Tabs
-          </h5>
-        </mdb-nav-item>
-        <mdb-nav-item class="list-group-item list-group-item-action" to="/forms">
-          <h5 class="text-center">
-            表单
-          </h5>
-        </mdb-nav-item>
-        <mdb-nav-item class="list-group-item list-group-item-action" to="/button">
-          <h5 class="text-center">
-            按钮
-          </h5>
-        </mdb-nav-item>
+        
   </mdb-list-group>
 </mdb-container>
 </template>
@@ -71,6 +51,16 @@ export default {
     mdbDropdownToggle,
     mdbDropdownMenu,
     mdbDropdownItem
-  }
+  },
+  data() {
+    return {
+      notes: [],
+    };
+  },
+  mounted() {
+  	$.getJSON('http://note.io/api/note_list', (data) => {
+  		this.notes = data
+  	})
+  },
 }
 </script>

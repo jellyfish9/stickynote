@@ -73,9 +73,8 @@ const Navbar = {
       type: Number,
       default: 100
     },
-    center: {
-      type: Boolean,
-      default: false
+    align: {
+      type: String,
     }
   },
   data() {
@@ -98,7 +97,7 @@ const Navbar = {
           this.position === 'bottom' ? 'fixed-bottom' : '',
         this.scrolling && 'scrolling-navbar',
         this.double && 'double-nav',
-        this.center && 'justify-content-around'
+        this.align && 'justify-content-'+this.align
       );
     },
     navTogglerIcon() {

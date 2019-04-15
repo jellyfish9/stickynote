@@ -1,7 +1,7 @@
 <template>
 <mdb-container :fluid="true">
   <mdb-navbar dark color="primary" name="qingu">
-  		<mdb-navbar-nav :center="true">
+  		<mdb-navbar-nav align="center">
             <mdb-nav-item to="/" :exact="true" waves-fixed><mdb-icon icon="arrow-left" size="2x" color="white"/></mdb-nav-item>
         	<mdb-nav-item waves-fixed><p class="h5 text-center text-white">添加笔记</p></mdb-nav-item>
         	<mdb-nav-item to="/" :exact="true" waves-fixed><mdb-icon icon="home" size="2x" color="white"/></mdb-nav-item>
@@ -46,9 +46,22 @@ export default {
 			//headers: {Origin: 'http://note.coolhand.vip'}
 			crossDomain: true
 		}*/
-  		$.post('http://api.coolhand.vip/note_add', data, function(res) {
+		$.ajax({
+		  type: 'POST',
+		  url: 'http://note.io/api/note_add',
+		  data: data,
+		  success: function(res) {alert(res)}
+		  /*
+		  headers: {
+		  	Access-Control-Request-Headers: '',
+		  	Access-Control-Request-Method: ''
+		  	}
+		  	*/
+		})
+		/*
+  		$.post('http://note.io/note_add', data, function(res) {
   			console.log(res)
-  		})
+  		})*/
   	}
   }
 }
