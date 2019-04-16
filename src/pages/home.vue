@@ -35,7 +35,7 @@
 
 <script>
 import { mdbContainer, mdbNavbar, mdbNavItem, mdbListGroup, mdbNavbarNav, mdbNavbarToggler, mdbIcon, mdbInput, mdbDropdown, mdbDropdownToggle, mdbDropdownMenu, mdbDropdownItem } from 'mdbvue';
-
+import config from 'config'
 export default {
   name: 'home',
   components: {
@@ -58,7 +58,7 @@ export default {
     };
   },
   mounted() {
-  	$.getJSON('http://note.io/api/note_list', (data) => {
+  	$.getJSON(config+'note_list', (data) => {
   		this.notes = data
   	})
   },
