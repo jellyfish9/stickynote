@@ -1,9 +1,12 @@
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var path = require('path')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+
+
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -15,7 +18,7 @@ const fileName = prd ? 'js/[name].[chunkhash:5].js' : 'js/[name].js'
 module.exports = {
   entry: {
     app: './src/index.js',
-    //vendor: ['vue', 'vue-router', './src/components/mdbvue.umd.min.js']
+    //lib: ['vue', 'vue-router']
   },
   mode: 'development',
   performance: { hints: false },
@@ -132,29 +135,22 @@ module.exports = {
     ],
     optimization: {
     	minimizer: [
-    		new UglifyJSPlugin({
-		    	uglifyOptions: {
-		            exclude: /node_modules/,
-		            sourceMap: false,
-		            compress: {
-		                warnings: false,
-		                loops: true,
-		                conditionals: true
-		            }
-	            }
-	        })
+    		new TerserPlugin(),
+    		new OptimizeCSSAssetsPlugin()
     	],
 		splitChunks: {
 			name: true,
 			chunks: "all",
-			minChunks: 2,
+			minChunks: 1,
+			automaticNameDelimiter: '-',
 			cacheGroups: {
-				
 				 vendor: {
 				 	name: "vendor",
-				 	test: /node_modules/,
+				 	test: /[\\/]node_modules[\\/]/,
 					reuseExistingChunk: true,
-					minChunks: 1,					
+					chunks: 'initial',
+					minChunks: 1,
+					priority: -10
 				},
 			}
 		}
