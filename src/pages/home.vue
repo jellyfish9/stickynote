@@ -58,7 +58,7 @@ export default {
     };
   },
   mounted() {
-  	$.getJSON(config+'note_list', (data) => {
+  	$.getJSON(config.API+'note_list', (data) => {
   		this.notes = data
   	})
   },
