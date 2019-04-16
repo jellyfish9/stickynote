@@ -86,15 +86,27 @@ module.exports = {
                     }
                 }
             }
-        ]
+            /*, {
+			   	type: 'javascript/auto',
+			    test: /\.json/,
+			    exclude: /node_modules/,
+			    use: {
+			      loader: 'file-loader',
+			      options: {
+			      	name: '[name].[ext]'
+			      }
+			    }
+			}*/
+		]
 	},
 	resolve: {
-	    extensions: ['.js', '.vue', '.css'],
+	    extensions: ['.js', '.vue', '.css', '.json'],
 	    alias: {
 	      'vue$': 'vue/dist/vue.esm.js',
 	      //'@': resolve('src/pages'),components
 	      //'mdbvue$': resolve('src/asset/mdbvue.umd.min.js')
-	      'mdbvue$': resolve('src/components/mdbvue/index.js')
+	      'mdbvue$': resolve('src/components/mdbvue/index.js'),
+	      'config$': resolve('src/asset/config.json')
 	    }
 	},
 	plugins: [

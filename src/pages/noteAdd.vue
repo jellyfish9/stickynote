@@ -23,7 +23,7 @@
 
 <script>
 import { mdbContainer, mdbNavbar, mdbNavbarNav, mdbNavItem, mdbIcon, mdbInput, mdbTextarea, mdbBtn } from 'mdbvue'
-
+import config from 'config'
 export default {
   name: 'note_add',
   components: {
@@ -48,7 +48,7 @@ export default {
 		}*/
 		$.ajax({
 		  type: 'POST',
-		  url: 'http://note.io/api/note_add',
+		  url: config.API+'note_add',
 		  data: data,
 		  success: function(res) {alert(res)}
 		  /*
