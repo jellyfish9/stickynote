@@ -12,15 +12,16 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-let prd = false
+let prd = true
 const fileName = prd ? 'js/[name].[chunkhash:5].js' : 'js/[name].js'
+let mode = prd ? 'production' : 'development'
 
 module.exports = {
   entry: {
     app: './src/index.js',
-    //lib: ['vue', 'vue-router']
+    //vue: ['vue','vue-router']
   },
-  mode: 'development',
+  mode: mode,
   performance: { hints: false },
   output: {
 	    path: resolve('static'),
@@ -29,6 +30,7 @@ module.exports = {
 	    chunkFilename: "js/[id].[chunkhash:5].js"
   },
   module: {
+  		noParse: /zepto/,
         rules: [
 			{
                 test: /\.css$/,
@@ -115,8 +117,8 @@ module.exports = {
 	plugins: [
     	new VueLoaderPlugin(),
     	new MiniCssExtractPlugin({
-    		filename: "[name].min.css",
-	      	chunkFilename: "[id].css"
+    		filename: "[name].css",
+	      	chunkFilename: "[id].[chunkhash:5].css"
 	    }),
 	    
         new webpack.ProvidePlugin({
@@ -128,7 +130,7 @@ module.exports = {
             template: 'src/ejs/index.ejs',
             filename: './index.html',
             inject: true,
-            chunks: ['vendor', 'app'],
+            chunks: ['vendor', 'mdb', 'app'],
             hash: false,
             customJs: ['zepto.min.js']
         }),
@@ -144,14 +146,19 @@ module.exports = {
 			minChunks: 1,
 			automaticNameDelimiter: '-',
 			cacheGroups: {
-				 vendor: {
+				vendor: {
 				 	name: "vendor",
-				 	test: /[\\/]node_modules[\\/]/,
+				 	test: /node_modules/,
 					reuseExistingChunk: true,
-					chunks: 'initial',
+					chunks: 'all',
 					minChunks: 1,
-					priority: -10
 				},
+				mdb: {
+					name: 'mdb',
+					test: /mdbvue.*\.vue$/,
+					reuseExistingChunk: true,
+					priority: -10
+				}
 			}
 		}
 	},
