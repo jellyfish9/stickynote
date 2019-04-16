@@ -5,8 +5,8 @@
   "homepage": "http://www.coolhand.vip",
   "main": "src/index.js",
   "scripts": {
-    "dev": "node_modules/.bin/webpack-dev-server --hot --inline --content-base ./static",
-    "build": "node_modules/.bin/webpack"
+    "dev": "node_modules/.bin/webpack-dev-server --mode=development --hot --inline --content-base ./static",
+    "prd": "node_modules/.bin/webpack --mode=production"
   },
   "keywords": [
     "sticky",
@@ -58,6 +58,7 @@
     "classnames": "^2.2.6",
     "moment": "^2.24.0",
     "popper.js": "^1.14.7",
+    "toastr": "^2.1.4",
     "vue-clickaway": "^2.2.2",
     "zepto": "^1.2.0"
   },

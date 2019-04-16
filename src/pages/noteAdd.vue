@@ -24,6 +24,9 @@
 <script>
 import { mdbContainer, mdbNavbar, mdbNavbarNav, mdbNavItem, mdbIcon, mdbInput, mdbTextarea, mdbBtn } from 'mdbvue'
 import config from 'config'
+import VueToasted from 'vue-toasted'
+import Vue from 'vue'
+Vue.use(VueToasted, {iconPack: 'fontawesome'})
 export default {
   name: 'note_add',
   components: {
@@ -50,7 +53,13 @@ export default {
 		  type: 'POST',
 		  url: config.API+'note_add',
 		  data: data,
-		  success: function(res) {alert(res)}
+		  success: function(res) {
+		  Vue.toasted.show(res, {
+		        icon : {
+		            name : 'check'
+		        }
+			})
+		}
 		  /*
 		  headers: {
 		  	Access-Control-Request-Headers: '',

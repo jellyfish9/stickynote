@@ -8,11 +8,12 @@
   <title>王伟的便笺</title>
  </head>
  <body>
+ <% for (item of htmlWebpackPlugin.options.customJs) { %>
+	<script src="js/<%= item %>"></script>
+<% } %>
  	<div id="app">
 			<router-view></router-view>
 	</div>
  </body>
- <% for (item of htmlWebpackPlugin.options.customJs) { %>
-<script src="js/<%= item %>"></script>
-<% } %>
+
 </html>

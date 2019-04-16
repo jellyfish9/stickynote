@@ -7,24 +7,18 @@
   </mdb-navbar>
 
   <div class="mt-5">
-  	<p class="h4 text-center mb-4">session机制</p>
-    <div class="grey-text">
-    	Developed and managed projects through Cognos solutions
-Applied and worked on Cognos TM1 and Enterprise
-Coordinated with the client and took project requirements and feedback
-Provided valuable input at all stages of work
-Took care of the technical and operational issues
-Ensure that the projects were completed within the deadline and budget
-Build and installed framework
-Ensured proper scheduling and administration of Cognos connection
+    <div class="secondary-color-dark white-text">
+    	{{note.note}}
     </div>
+    
+    <Btn icon="code" :rounded="true" :block="true" size="lg">备注</Btn>
   </div>
 </mdb-container>
 </template>
 
 <script>
-import { mdbContainer, mdbNavbar, mdbNavbarNav, mdbNavItem, mdbIcon } from 'mdbvue'
-
+import { mdbContainer, mdbNavbar, mdbNavbarNav, mdbNavItem, mdbIcon, Btn } from 'mdbvue'
+import config from 'config'
 export default {
   name: 'note_show',
   components: {
@@ -32,9 +26,21 @@ export default {
     mdbNavbar,
     mdbNavbarNav,
     mdbNavItem,
-    mdbIcon
+    mdbIcon,
+    Btn
   },
-
+  data() {
+    return {
+      note: {},
+      id: 0,
+    };
+  },
+  mounted() {
+  	let id = this.$route.params.id
+  	$.getJSON(config.API+'note_show/'+id, (data) => {
+  		this.note = data
+  	})
+  },
   methods:{
   	go_back(){
   		this.$router.back()

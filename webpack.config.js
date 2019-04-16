@@ -12,16 +12,16 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-let prd = true
-const fileName = prd ? 'js/[name].[chunkhash:5].js' : 'js/[name].js'
-let mode = prd ? 'production' : 'development'
 
-module.exports = {
+module.exports = (env, argv) => {
+	console.log(argv.mode)
+	let fileName = argv.mode === 'production' ? 'js/[name].[chunkhash:5].js' : 'js/[name].js'
+	return {
   entry: {
     app: './src/index.js',
     //vue: ['vue','vue-router']
   },
-  mode: mode,
+  mode: argv.mode,
   performance: { hints: false },
   output: {
 	    path: resolve('static'),
@@ -120,12 +120,13 @@ module.exports = {
     		filename: "[name].css",
 	      	chunkFilename: "[id].[chunkhash:5].css"
 	    }),
-	    
+	    /*
         new webpack.ProvidePlugin({
             _: "lodash",
             Vue: "vue",
            
         }),
+        */
         new HtmlWebpackPlugin({
             template: 'src/ejs/index.ejs',
             filename: './index.html',
@@ -155,7 +156,7 @@ module.exports = {
 				},
 				mdb: {
 					name: 'mdb',
-					test: /mdbvue.*\.vue$/,
+					test: /mdbvue.*/,
 					reuseExistingChunk: true,
 					priority: -10
 				}
@@ -170,4 +171,5 @@ module.exports = {
             
 }
 
+} // func
 
