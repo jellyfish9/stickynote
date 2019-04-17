@@ -8,7 +8,7 @@
         </mdb-navbar-nav>
           <!-- Search form -->
         <form>
-            <mdb-input type="text" class="text-white" placeholder="搜索" aria-label="search">
+            <mdb-input type="text" id="kw" class="text-white" placeholder="搜索" aria-label="search">
             <mdb-dropdown slot="prepend">
                 <mdb-dropdown-toggle color="primary" size="md" slot="toggle" class="z-depth-0">tags</mdb-dropdown-toggle>
                 <mdb-dropdown-menu>
@@ -72,5 +72,13 @@ export default {
   		this.notes = JSON.parse(note_list)
   	}
   },
+  methods:{
+  	search(){
+  		let kw = $('#kw').val()
+  		$.getJSON(config.API+'note_search', {kw:kw}, (data) => {
+  			this.notes = data
+  		})
+  	}
+  }
 }
 </script>
