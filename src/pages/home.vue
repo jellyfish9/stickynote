@@ -23,11 +23,12 @@
   </mdb-navbar>
   
   <mdb-list-group>
-  		<mdb-nav-item v-for="n in notes" class="list-group-item list-group-item-action" :to="'note/'+n.id">
+  		<mdb-nav-item v-for="n in notes" class="list-group-item list-group-item-action" :to="'/note/'+n.id">
           <h5 class="text-center">
             {{n.note}}
           </h5>
         </mdb-nav-item>
+        <!-- <mdb-nav-item to="/tabs" waves-fixed>tabs</mdb-nav-item>-->
         
   </mdb-list-group>
 </mdb-container>
@@ -59,9 +60,17 @@ export default {
   },
   mounted() {
   	///this.API = config.API
-  	$.getJSON(config.API+'note_list', (data) => {
-  		this.notes = data
-  	})
+  	let note_list = sessionStorage.getItem('note_list')
+  	if (null === note_list) {
+	  	$.getJSON(config.API+'note_list', (data) => {
+	  		if (typeof data === 'object') {
+	  		this.notes = data
+	  		sessionStorage.setItem('note_list', JSON.stringify(data))
+	  		}
+	  	})
+  	} else {
+  		this.notes = JSON.parse(note_list)
+  	}
   },
 }
 </script>

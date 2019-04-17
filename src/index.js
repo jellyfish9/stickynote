@@ -1,6 +1,6 @@
 //import App from './App'
 import './asset/bootstrap.min.css'
-import './asset/mdb.css'
+import './asset/mdb-pro.css'
 //import './asset/all.css'
 
 import Vue from 'vue'
