@@ -37,9 +37,12 @@ export default {
   },
   mounted() {
   	let id = this.$route.params.id
+  	if (this.id != id) {
+  	this.id = id
   	$.getJSON(config.API+'note_show/'+id, (data) => {
   		this.note = data
   	})
+  	}
   },
   methods:{
   	go_back(){

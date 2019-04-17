@@ -57,7 +57,8 @@ export default {
 		  Vue.toasted.show(res, {
 		        icon : {
 		            name : 'check'
-		        }
+		        },
+		        duration: 3000
 			})
 		}
 		  /*
