@@ -6729,7 +6729,7 @@ a.btn:not([href]):not([tabindex]):hover {
     .navbar.navbar-dark form .md-form .form-control::-ms-input-placeholder {
       color: #fff;
       font-weight: 300; }
-    .navbar.navbar-dark form .md-form .form-control::placeholder {
+    .navbar.navbar-dark form .md-form .form-control::placeholder,.navbar.navbar-dark .md-form .form-control::placeholder {
       color: #fff;
       font-weight: 300; }
   @media (min-width: 600px) {

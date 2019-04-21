@@ -7,18 +7,16 @@
             <mdb-nav-item waves-fixed><mdb-icon icon="star" size="2x"/></mdb-nav-item>
         </mdb-navbar-nav>
           <!-- Search form -->
-        <form>
-            <mdb-input type="text" id="kw" class="text-white" placeholder="搜索" aria-label="search">
-            <mdb-dropdown slot="prepend">
-                <mdb-dropdown-toggle color="primary" size="md" slot="toggle" class="z-depth-0">tags</mdb-dropdown-toggle>
-                <mdb-dropdown-menu>
-                  <mdb-dropdown-item>Linux</mdb-dropdown-item>
-                  <mdb-dropdown-item>PHP</mdb-dropdown-item>
-                  <mdb-dropdown-item>Vue</mdb-dropdown-item>
-                </mdb-dropdown-menu>
-              </mdb-dropdown>
-           </mdb-input>   
-        </form>
+        <mdb-navbar-nav right>
+        
+            <select class="browser-default">
+            	<option value="1">标签</option>
+			  <option value="1">Linux</option>
+			  <option value="2">PHP</option>
+			  <option value="3">Vue</option>
+			</select>
+			<mdb-input type="text" id="kw" placeholder="搜索" aria-label="search" icon="search"/>
+        </mdb-navbar-nav>
     </mdb-navbar-toggler>
   </mdb-navbar>
   
@@ -71,6 +69,11 @@ export default {
   	} else {
   		this.notes = JSON.parse(note_list)
   	}
+  	$(document).on('keydown', 'input', (e) => {
+  		if (e.code == 'Enter') {
+  			this.search()
+  		}
+  	})
   },
   methods:{
   	search(){
