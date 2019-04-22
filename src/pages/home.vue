@@ -1,21 +1,19 @@
 <template>
 <mdb-container :fluid="true">
-  <mdb-navbar dark color="primary" name="qingu" href="#">
-  	<mdb-navbar-toggler>
+  <mdb-navbar dark color="primary" name="qingu" expand="sm">
+  	
   		<mdb-navbar-nav left>
             <mdb-nav-item to="/note/add" waves-fixed><mdb-icon icon="pen-square" size="2x"/></mdb-nav-item>
-            <mdb-nav-item waves-fixed><mdb-icon icon="star" size="2x"/></mdb-nav-item>
         </mdb-navbar-nav>
-          <!-- Search form -->
+        <mdb-navbar-toggler>
         <mdb-navbar-nav right>
-        
-            <select class="browser-default">
+            <select class="browser-default mr-2" @click.stop="select">
             	<option value="1">标签</option>
 			  <option value="1">Linux</option>
 			  <option value="2">PHP</option>
 			  <option value="3">Vue</option>
 			</select>
-			<mdb-input type="text" id="kw" placeholder="搜索" aria-label="search" icon="search"/>
+			<mdb-input type="text" id="kw" placeholder="搜索" aria-label="search"/>
         </mdb-navbar-nav>
     </mdb-navbar-toggler>
   </mdb-navbar>
@@ -81,6 +79,9 @@ export default {
   		$.getJSON(config.API+'note_search', {kw:kw}, (data) => {
   			this.notes = data
   		})
+  	},
+  	select(){
+  	 return false
   	}
   }
 }
