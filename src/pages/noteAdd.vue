@@ -11,8 +11,16 @@
   <div class="mt-5">
     
     <div class="grey-text">
-      <mdb-input id="note" label="笔记" icon="tag" group type="text" validate error="wrong" success="right"/>
+      <mdb-input id="note" label="笔记" group type="text" validate error="wrong" success="right"/>
       <mdb-textarea :rows="8" label="备注" icon="pencil-alt"/>
+      <mdb-input id="tag" label="标签" icon="tag" group type="text" validate error="wrong" success="right"/>
+      <select class="mdb-select md-form" multiple>
+		  <option value="" disabled selected>Choose your country</option>
+		  <option value="1">USA</option>
+		  <option value="2">Germany</option>
+	  </select>
+	  
+	  <!--<button class="btn-save btn btn-primary btn-sm">确定</button>-->
     </div>
     <div class="text-center">
       <mdb-btn outline="secondary" @click="save">保存</mdb-btn>
@@ -43,7 +51,8 @@ export default {
   methods:{
   	save(e){
   		//e.preventDefault()
-  		let data = {note: $('#note').val(), mark: $('textarea').first().val()}
+  		var tag = $('#tag').val()
+  		let data = {tag, note: $('#note').val(), mark: $('textarea').first().val()}
 		$.ajaxSettings.crossDomain = true
 		/*
 			//headers: {Origin: 'http://note.coolhand.vip'}
