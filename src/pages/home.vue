@@ -9,7 +9,7 @@
         <mdb-navbar-nav right>
             <select id="tag" class="browser-default mr-2" @click.stop="select">
             	<option value="">标签</option>
-			  <option v-for="t in tags" :value="t">{{t}}</option>
+			  <option v-for="t in tags" {{selected(t)}} :value="t">{{t}}</option>
 			</select>
 			<mdb-input type="text" id="kw" placeholder="搜索" aria-label="search"/>
         </mdb-navbar-nav>
@@ -50,7 +50,8 @@ export default {
   data() {
     return {
       notes: [],
-      tags: []
+      tags: [],
+      currentTag:''
     };
   },
   mounted() {
@@ -78,9 +79,10 @@ export default {
   		}
   	})
   },
-  methods:{
+  methods: {
   	search(){
   		var tag = $('#tag').val()
+  		this.currentTag = tag
   		let kw = $('#kw').val()
   		$.getJSON(config.API+'note_search', {tag, kw}, (data) => {
   			this.notes = data
@@ -88,6 +90,12 @@ export default {
   	},
   	select(){
   	 return false
+  	}
+  },
+  
+  computed: {
+  	selected(tag) {
+  		return tag == this.currentTag ? 'selected' : ''
   	}
   }
 }
