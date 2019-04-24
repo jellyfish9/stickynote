@@ -11,10 +11,11 @@
             	<option value="">标签</option>
             	<template v-for="t in tags">
             	<template v-if="t == currentTag">
-			  <option :value="t" selected>{{t}}</option>
-			  <template v-else>
-			  <option :value="t">{{t}}</option>
-			  </template>
+				  <option :value="t" selected>{{t}}</option>
+				  </template>
+				  <template v-else>
+				  <option :value="t">{{t}}</option>
+				  </template>
 			  </template>
 			</select>
 			<mdb-input type="text" id="kw" placeholder="搜索" aria-label="search"/>
