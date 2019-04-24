@@ -63,12 +63,13 @@ export default {
 		  url: config.API+'note_add',
 		  data: data,
 		  success: function(res) {
-		  Vue.toasted.show(res, {
+		  	Vue.toasted.show(res, {
 		        icon : {
 		            name : 'check'
 		        },
 		        duration: 3000
 			})
+			sessionStorage.removeItem('note_list')
 		}
 		  /*
 		  headers: {
