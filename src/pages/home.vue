@@ -7,7 +7,7 @@
         </mdb-navbar-nav>
         <mdb-navbar-toggler>
         <mdb-navbar-nav right>
-            <select class="browser-default mr-2" @click.stop="select">
+            <select id="tag" class="browser-default mr-2" @click.stop="select">
             	<option value="1">标签</option>
 			  <option value="1">Linux</option>
 			  <option value="2">PHP</option>
@@ -75,8 +75,9 @@ export default {
   },
   methods:{
   	search(){
+  		var tag = $('#tag').val()
   		let kw = $('#kw').val()
-  		$.getJSON(config.API+'note_search', {kw:kw}, (data) => {
+  		$.getJSON(config.API+'note_search', {tag, kw}, (data) => {
   			this.notes = data
   		})
   	},
