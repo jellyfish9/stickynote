@@ -9,7 +9,13 @@
         <mdb-navbar-nav right>
             <select id="tag" class="browser-default mr-2" @click.stop="select">
             	<option value="">标签</option>
-			  <option v-for="t in tags" {{selected(t)}} :value="t">{{t}}</option>
+            	<template v-for="t in tags">
+            	<template v-if="t == currentTag">
+			  <option :value="t" selected>{{t}}</option>
+			  <template v-else>
+			  <option :value="t">{{t}}</option>
+			  </template>
+			  </template>
 			</select>
 			<mdb-input type="text" id="kw" placeholder="搜索" aria-label="search"/>
         </mdb-navbar-nav>
