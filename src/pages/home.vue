@@ -18,7 +18,7 @@
 				  </template>
 			  </template>
 			</select>
-			<mdb-input type="text" id="kw" placeholder="搜索" @keyup.enter="search" aria-label="search"/>
+			<mdb-input type="text" id="kw" placeholder="搜索" @keydown.enter.native="search" aria-label="search"/>
         </mdb-navbar-nav>
     </mdb-navbar-toggler>
   </mdb-navbar>
