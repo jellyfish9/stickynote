@@ -7,7 +7,7 @@
         </mdb-navbar-nav>
         <mdb-navbar-toggler>
         <mdb-navbar-nav right>
-            <select id="tag" class="browser-default mr-2" @click.stop="select">
+            <select id="tag" class="browser-default mr-2" @click.stop="select" @change="search">
             	<option value="">标签</option>
             	<template v-for="t in tags">
             	<template v-if="t == currentTag">
@@ -18,7 +18,7 @@
 				  </template>
 			  </template>
 			</select>
-			<mdb-input type="text" id="kw" placeholder="搜索" aria-label="search"/>
+			<mdb-input type="text" id="kw" placeholder="搜索" @keyup.enter="search" aria-label="search"/>
         </mdb-navbar-nav>
     </mdb-navbar-toggler>
   </mdb-navbar>
@@ -80,11 +80,7 @@ export default {
   		this.notes = JSON.parse(note_list)
   		this.tags = JSON.parse(tags)
   	}
-  	$(document).on('keypress', 'input', (e) => {
-  		if (e.code == 'Enter') {
-  			this.search()
-  		}
-  	})
+  	
   },
   methods: {
   	search(){
