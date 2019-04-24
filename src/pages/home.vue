@@ -8,10 +8,8 @@
         <mdb-navbar-toggler>
         <mdb-navbar-nav right>
             <select id="tag" class="browser-default mr-2" @click.stop="select">
-            	<option value="1">标签</option>
-			  <option value="1">Linux</option>
-			  <option value="2">PHP</option>
-			  <option value="3">Vue</option>
+            	<option value="">标签</option>
+			  <option v-for="t in tags" :value="t">{{t}}</option>
 			</select>
 			<mdb-input type="text" id="kw" placeholder="搜索" aria-label="search"/>
         </mdb-navbar-nav>
@@ -52,11 +50,13 @@ export default {
   data() {
     return {
       notes: [],
+      tags: []
     };
   },
   mounted() {
   	///this.API = config.API
   	let note_list = sessionStorage.getItem('note_list')
+  	let tags = sessionStorage.getItem('tags')
   	if (null === note_list) {
 	  	$.getJSON(config.API+'note_list', (data) => {
 	  		if (typeof data === 'object') {
@@ -64,8 +64,13 @@ export default {
 	  		sessionStorage.setItem('note_list', JSON.stringify(data))
 	  		}
 	  	})
+	  	$.getJSON(config.API+'note_tags', (data) => {
+	  		this.tags = data
+	  		sessionStorage.setItem('tags', JSON.stringify(data))
+	  	})
   	} else {
   		this.notes = JSON.parse(note_list)
+  		this.tags = JSON.parse(tags)
   	}
   	$(document).on('keydown', 'input', (e) => {
   		if (e.code == 'Enter') {
