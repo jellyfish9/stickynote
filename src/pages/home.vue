@@ -80,7 +80,7 @@ export default {
   		this.notes = JSON.parse(note_list)
   		this.tags = JSON.parse(tags)
   	}
-  	$(document).on('keydown', 'input', (e) => {
+  	$(document).on('keypress', 'input', (e) => {
   		if (e.code == 'Enter') {
   			this.search()
   		}
