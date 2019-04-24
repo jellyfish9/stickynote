@@ -13,6 +13,7 @@
     <div class="grey-text">
       <mdb-input id="note" label="笔记" icon="tag" group type="text" :value="note.note" validate error="wrong" success="right"/>
       <mdb-textarea :rows="8" label="备注" icon="pencil-alt" :value="note.mark"/>
+      <mdb-input id="tag" label="标签" icon="tag" group type="text" :value="note.tag" inputClass="w-50" validate error="wrong" success="right"/>
     </div>
     <div class="text-center">
       <mdb-btn outline="secondary" @click="save">保存</mdb-btn>
@@ -52,8 +53,8 @@ export default {
   },
   methods:{
   	save(e){
-  		//e.preventDefault()
-  		let data = {note: $('#note').val(), mark: $('textarea').first().val()}
+  		var tag = $('#tag').val()
+  		let data = {tag, note: $('#note').val(), mark: $('textarea').first().val()}
 		//$.ajaxSettings.crossDomain = true
 		/*
 			//headers: {Origin: 'http://note.coolhand.vip'}
