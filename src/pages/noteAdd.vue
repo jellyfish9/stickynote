@@ -1,6 +1,6 @@
 <template>
 <mdb-container :fluid="true">
-  <mdb-navbar dark color="primary" name="qingu">
+  <mdb-navbar dark color="primary" name="qingu" expand="sm">
   		<mdb-navbar-nav justifyAround>
             <mdb-nav-item to="/" :exact="true" waves-fixed><mdb-icon icon="arrow-left" size="2x" color="white"/></mdb-nav-item>
         	<mdb-nav-item waves-fixed><p class="h5 text-center text-white">添加笔记</p></mdb-nav-item>
