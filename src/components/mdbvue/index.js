@@ -88,6 +88,7 @@ import Tooltip, { mdbTooltip } from './components/Tooltip';
 import ViewWrapper, { mdbView } from './components/ViewWrapper';
 import waves from './mixins/waves';
 import animateOnScroll from './directives/AnimateOnScroll';
+import SelectItem, { mdbSelectItem } from './components/SelectItem'; 
 
 export {
   // FREE
@@ -264,5 +265,7 @@ export {
   mdbTblHead,
   mdbTextarea,
   mdbTooltip,
-  mdbView
+  mdbView,
+  SelectItem,
+  mdbSelectItem
 };

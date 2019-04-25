@@ -19,7 +19,15 @@
 		  <option value="1">USA</option>
 		  <option value="2">Germany</option>
 	  </select>
-	  
+	  <!--<mdb-select multiple selectAll @getValue="getSelectValue" :options="countries" />-->
+	  <div class="select-wrapper mdb-select md-form">
+	  <input type="text" class="select-dropdown"/>
+	  <ul class="dropdown-content select-dropdown w-50 multiple-select-dropdown" style="display: block;opacity:1;">
+	  	<select-item :selectAll="true">love u</select-item>
+	  	<select-item>option 1</select-item>
+	  	<select-item>option 2</select-item>
+	  </ul>
+	  </div>
     </div>
     <div class="text-center">
       <mdb-btn outline="secondary" @click="save">保存</mdb-btn>
@@ -29,7 +37,7 @@
 </template>
 
 <script>
-import { mdbContainer, mdbNavbar, mdbNavbarNav, mdbNavItem, mdbIcon, mdbInput, mdbTextarea, mdbBtn } from 'mdbvue'
+import { mdbContainer, mdbNavbar, mdbNavbarNav, mdbNavItem, mdbIcon, mdbInput, mdbTextarea, mdbBtn,SelectItem } from 'mdbvue'
 import config from 'config'
 import VueToasted from 'vue-toasted'
 import Vue from 'vue'
@@ -44,7 +52,8 @@ export default {
     mdbIcon,
     mdbInput,
     mdbTextarea,
-    mdbBtn
+    mdbBtn,
+    SelectItem
   },
 
   methods:{

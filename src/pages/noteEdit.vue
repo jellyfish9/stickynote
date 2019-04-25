@@ -14,6 +14,7 @@
     	<mdb-textarea id="note" :rows="4" label="笔记" icon="pencil-alt" :value="note.note"/>
       	<mdb-textarea :rows="4" label="备注" icon="map-pin" :value="note.mark"/>
       	<mdb-input id="tag" label="标签" icon="tag" group type="text" :value="note.tag" inputClass="w-50" validate error="wrong" success="right"/>
+      	
     </div>
     <div class="text-center">
       <mdb-btn outline="secondary" @click="save">保存</mdb-btn>
