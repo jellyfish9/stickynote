@@ -112,7 +112,8 @@ module.exports = (env, argv) => {
 	      //'mdbvue$': resolve('src/asset/mdbvue.umd.min.js')
 	      'mdbvue$': resolve('src/components/mdbvue/index.js'),
 	      'config$': resolve('src/asset/config.json')
-	    }
+	    },
+		modules: ['/var/www/web/node_modules']
 	},
 	plugins: [
     	new VueLoaderPlugin(),

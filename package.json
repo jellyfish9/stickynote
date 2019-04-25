@@ -5,8 +5,8 @@
   "homepage": "http://www.coolhand.vip",
   "main": "src/index.js",
   "scripts": {
-    "dev": "node_modules/.bin/webpack-dev-server --mode=development --hot --inline --content-base ./static",
-    "prd": "node_modules/.bin/webpack --mode=production"
+    "dev": "webpack-dev-server --mode=development --hot --inline --content-base ./static",
+    "prd": "webpack --mode=production"
   },
   "keywords": [
     "sticky",
