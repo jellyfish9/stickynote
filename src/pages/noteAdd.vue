@@ -11,8 +11,8 @@
   <div class="mt-5">
     
     <div class="grey-text">
-      <mdb-input id="note" label="笔记" group type="text" validate error="wrong" success="right"/>
-      <mdb-textarea :rows="8" label="备注" icon="pencil-alt"/>
+      <mdb-textarea id="note" :rows="4" label="笔记" icon="pencil-alt"/>
+      <mdb-textarea :rows="4" label="备注" icon="map-pin"/>
       <mdb-input id="tag" label="标签" icon="tag" group type="text" inputClass="w-50" validate error="wrong" success="right"/>
       <select class="mdb-select md-form" multiple>
 		  <option value="" disabled selected>Choose your country</option>
