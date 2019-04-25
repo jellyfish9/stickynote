@@ -20,7 +20,6 @@
 		  <option value="2">Germany</option>
 	  </select>
 	  
-	  <!--<button class="btn-save btn btn-primary btn-sm">确定</button>-->
     </div>
     <div class="text-center">
       <mdb-btn outline="secondary" @click="save">保存</mdb-btn>
