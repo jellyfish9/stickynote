@@ -42,7 +42,6 @@ export default {
     mdbInput,
     mdbTextarea,
     mdbBtn,
-    SelectItem,
     mdbSelect
   },
   data() {
