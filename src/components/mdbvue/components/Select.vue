@@ -1,7 +1,7 @@
 <template>
   <component :is="tag" class="select-wrapper mdb-select md-form">
   <input type="text" class="select-dropdown" @click="toggleUl" v-on-clickaway="away"/>
-  <ul :class="classNames">
+  <ul :class="className">
   	<select-item :selectAll="true">全选</select-item>
   	<select-item v-for="(item, index) in options">{{item}}</select-item>
   </ul>
