@@ -14,20 +14,9 @@
       <mdb-textarea id="note" :rows="4" label="笔记" icon="pencil-alt"/>
       <mdb-textarea :rows="4" label="备注" icon="map-pin"/>
       <mdb-input id="tag" label="标签" icon="tag" group type="text" inputClass="w-50" validate error="wrong" success="right"/>
-      <select class="mdb-select md-form" multiple>
-		  <option value="" disabled selected>Choose your country</option>
-		  <option value="1">USA</option>
-		  <option value="2">Germany</option>
-	  </select>
+
 	  <!--<mdb-select multiple selectAll @getValue="getSelectValue" :options="countries" />-->
-	  <div class="select-wrapper mdb-select md-form">
-	  <input type="text" class="select-dropdown"/>
-	  <ul class="dropdown-content select-dropdown w-50 multiple-select-dropdown" style="display: block;opacity:1;">
-	  	<select-item :selectAll="true">love u</select-item>
-	  	<select-item>option 1</select-item>
-	  	<select-item>option 2</select-item>
-	  </ul>
-	  </div>
+	  <mdb-select :options="tags"></mdb-select>
     </div>
     <div class="text-center">
       <mdb-btn outline="secondary" @click="save">保存</mdb-btn>
@@ -37,7 +26,7 @@
 </template>
 
 <script>
-import { mdbContainer, mdbNavbar, mdbNavbarNav, mdbNavItem, mdbIcon, mdbInput, mdbTextarea, mdbBtn,SelectItem } from 'mdbvue'
+import { mdbContainer, mdbNavbar, mdbNavbarNav, mdbNavItem, mdbIcon, mdbInput, mdbTextarea, mdbBtn, SelectItem, mdbSelect } from 'mdbvue'
 import config from 'config'
 import VueToasted from 'vue-toasted'
 import Vue from 'vue'
@@ -53,12 +42,20 @@ export default {
     mdbInput,
     mdbTextarea,
     mdbBtn,
-    SelectItem
+    SelectItem,
+    mdbSelect
   },
-
+  data() {
+    return {
+      tags: [],
+    };
+  },
+  created() {
+  	this.tags = sessionStorage.getItem('tags')
+  },
   methods:{
   	save(e){
-  		//e.preventDefault()
+  		
   		var tag = $('#tag').val()
   		let data = {tag, note: $('#note').val(), mark: $('textarea').first().val()}
 		$.ajaxSettings.crossDomain = true
@@ -79,12 +76,7 @@ export default {
 			})
 			sessionStorage.removeItem('note_list')
 		}
-		  /*
-		  headers: {
-		  	Access-Control-Request-Headers: '',
-		  	Access-Control-Request-Method: ''
-		  	}
-		  	*/
+
 		})
 		/*
   		$.post('http://note.io/note_add', data, function(res) {
