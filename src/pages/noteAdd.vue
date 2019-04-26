@@ -51,7 +51,7 @@ export default {
     };
   },
   created() {
-  	this.tags = sessionStorage.getItem('tags')
+  	this.tags = JSON.parse(sessionStorage.getItem('tags'))
   },
   methods:{
   	save(e){

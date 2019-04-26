@@ -1,6 +1,6 @@
 <template>
   <component :is="tag" class="select-wrapper mdb-select md-form">
-  <input type="text" class="select-dropdown" v-on-clickaway="away"/>
+  <input type="text" class="select-dropdown" @click="toggleUl" v-on-clickaway="away"/>
   <ul :class="classNames">
   	<select-item :selectAll="true">全选</select-item>
   	<select-item v-for="(item, index) in options">{{item}}</select-item>
@@ -31,13 +31,18 @@ const mdbSelect = {
   methods: {
     away() {
       this.toggle = false;
+    },
+    toggleUl() {
+    	this.toggle = !this.toggle
+    	var display = this.toggle == false ? 'none' : 'block'
+    	this.$el.firstElementChild.style.display = display
     }
   },
   computed: {
     className() {
       return classNames(
       	'dropdown-content select-dropdown w-50 multiple-select-dropdown'
-      );
+      )
     },
     
   }
