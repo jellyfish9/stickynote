@@ -18,6 +18,7 @@ import classNames from 'classnames';
 
 const SelectItem = {
   props: {
+
     tag: {
       type: String,
       default: "li"
@@ -48,6 +49,7 @@ const SelectItem = {
   methods: {
   	toggle() {
   		this.$refs.input.checked = this.active = !this.active
+  		this.$emit('change', this.active)
   	}
   }
 };

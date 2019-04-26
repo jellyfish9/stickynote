@@ -1,9 +1,10 @@
 <template>
   <component :is="tag" class="select-wrapper mdb-select md-form">
-  <input type="text" class="select-dropdown" @click="toggleUl" v-on-clickaway="away"/>
+  <input type="text" class="select-dropdown" @click="toggleUl" v-on-clickaway="away" :value="chosed.join(',')"/>
   <ul :class="className">
   	<select-item :selectAll="true">全选</select-item>
-  	<select-item v-for="(item, index) in options">{{item}}</select-item>
+  	<select-item v-for="(item, index) in options" @change="changeTag(active, index)">{{item}}</select-item>
+  	<mdb-btn color="primary" @click="choose">确定</mdb-btn>
   </ul>
   </component>
 </template>
@@ -25,6 +26,10 @@ const mdbSelect = {
     options: {
       type: Array
     },
+    chosed: {
+      type: Array,
+      default: []
+    },
   },
   data() {
     return {
@@ -39,7 +44,15 @@ const mdbSelect = {
     toggleUl() {
     	this.toggle = !this.toggle
     	var display = this.toggle == false ? 'none' : 'block'
-    	this.$el.firstElementChild.style.display = display
+    	this.$el.lastElementChild.style.display = display
+    },
+    choose() {
+     this.toggleUl()
+     // 填充chosed
+    },
+    changeTag(active, index) {
+    	console.log(active)
+    	console.log(index)
     }
   },
   computed: {
