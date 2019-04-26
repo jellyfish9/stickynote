@@ -9,10 +9,14 @@
 </template>
 
 <script>
-import classNames from 'classnames';
-import { mixin as clickaway } from 'vue-clickaway';
+import classNames from 'classnames'
+import { mixin as clickaway } from 'vue-clickaway'
+import { SelectItem } from 'mdbvue'
 
 const mdbSelect = {
+  components: {
+  	SelectItem
+  },
   props: {
     tag: {
       type: String,

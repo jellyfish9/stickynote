@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { mdbContainer, mdbNavbar, mdbNavbarNav, mdbNavItem, mdbIcon, mdbInput, mdbTextarea, mdbBtn, SelectItem, mdbSelect } from 'mdbvue'
+import { mdbContainer, mdbNavbar, mdbNavbarNav, mdbNavItem, mdbIcon, mdbInput, mdbTextarea, mdbBtn, mdbSelect } from 'mdbvue'
 import config from 'config'
 import VueToasted from 'vue-toasted'
 import Vue from 'vue'
