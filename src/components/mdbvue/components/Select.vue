@@ -3,7 +3,7 @@
   <i v-if="icon" :class="'fas prefix fa-' + icon"/>
   <input type="text" :class="inputClassName" @click="toggleUl" ref="input"/>
   <ul :class="className">
-  	<select-item :selectAll="true">全选</select-item>
+  	<select-item :selectAll="true" @change="checkAll">全选</select-item>
   	<select-item v-for="(item, index) in options" @change="changeTag($event, index)">{{item}}</select-item>
   	<Btn color="primary" @click="choose" size="sm">确定</Btn>
   </ul>
@@ -74,8 +74,25 @@ const mdbSelect = {
      // 填充chosed
     },
     changeTag(active, index) {
-    	this.chosedId[index] = active
     	this.$set(this.chosedId, index, active)
+    },
+    checkAll(active) {
+    	var lis = this.$el.lastElementChild.querySelectorAll('li')
+    	let len = lis.length
+    	for (let i=1; i<len; i++) {
+    		let input = lis[i].querySelector('input')
+    		if (active != input.checked) {
+    			lis[i].click()
+    		}
+    	}
+    	/*
+    	if (true === active) {
+	    	for (let index in this.options) {
+	    		this.$set(this.chosedId, index, true)
+	    	}
+    	} else {
+    		this.chosedId = []
+    	}*/
     }
   },
   computed: {

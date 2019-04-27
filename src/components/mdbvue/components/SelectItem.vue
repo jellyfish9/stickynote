@@ -34,9 +34,9 @@ const SelectItem = {
 
   },
   data() {
-    return {
-      active: false
-    };
+  	return {
+  		active: false
+  	}
   },
   computed: {
     className() {
@@ -44,15 +44,21 @@ const SelectItem = {
         this.disabled ? 'disabled' : '',
         this.active ? 'active' : ''
       )
-    },
+    }
   },
   methods: {
   	toggle() {
   		this.$refs.input.checked = this.active = !this.active
   		this.$emit('change', this.active)
   	}
-  }
-};
+  },
+  /*
+  watch: {
+    "$refs.input.checked"(to) {
+   		this.active = to
+   }
+  }*/
+}
 
 export default SelectItem;
 export { SelectItem as mdbSelectItem };
