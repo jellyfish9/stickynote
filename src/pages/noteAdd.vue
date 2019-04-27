@@ -13,10 +13,8 @@
     <div class="grey-text">
       <mdb-textarea id="note" :rows="4" label="笔记" icon="pencil-alt"/>
       <mdb-textarea :rows="4" label="备注" icon="map-pin"/>
-      <mdb-input id="tag" label="标签" icon="tag" group type="text" inputClass="w-50" validate error="wrong" success="right"/>
-
 	  <!--<mdb-select multiple selectAll @getValue="getSelectValue" :options="countries" />-->
-	  <mdb-select :options="tags"></mdb-select>
+	  <mdb-select :options="tags" :up="true" icon="tag" inputClass="w-50"></mdb-select>
     </div>
     <div class="text-center">
       <mdb-btn outline="secondary" @click="save">保存</mdb-btn>
@@ -50,7 +48,8 @@ export default {
     };
   },
   created() {
-  	this.tags = JSON.parse(sessionStorage.getItem('tags'))
+  	//this.tags = JSON.parse(sessionStorage.getItem('tags'))
+  	this.tags = ['linux','vue','php']
   },
   methods:{
   	save(e){

@@ -7611,6 +7611,7 @@ body.scrollable {
   .md-form .prefix {
     top: 0.25rem;
     font-size: 1.75rem; }
+	.md-form .prefix ~ input.select-dropdown,
     .md-form .prefix ~ input,
     .md-form .prefix ~ textarea {
       margin-left: 2.5rem;
@@ -11827,6 +11828,7 @@ select {
   position: absolute;
   z-index: 999;
   will-change: width, height; }
+  .prefix ~ input.select-dropdown ~ .dropdown-content { left: 2.5rem}
   .dropdown-content li {
     clear: both;
     color: #000;
