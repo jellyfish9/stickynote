@@ -48,8 +48,8 @@ export default {
     };
   },
   created() {
-  	//this.tags = JSON.parse(sessionStorage.getItem('tags'))
-  	this.tags = ['linux','vue','php']
+  	this.tags = JSON.parse(sessionStorage.getItem('tags'))
+  	//this.tags = ['linux','vue','php']
   },
   methods:{
   	save(e){
