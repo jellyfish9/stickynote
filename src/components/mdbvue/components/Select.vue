@@ -78,7 +78,7 @@ const mdbSelect = {
     checkAll(active) {
     	var lis = this.$el.lastElementChild.querySelectorAll('li')
     	let len = lis.length
-    	for (let i=1; i<len; i++) {
+    	for (let i=1; i<len-1; i++) {
     		let input = lis[i].querySelector('input')
     		if (active != input.checked) {
     			lis[i].click()
@@ -110,7 +110,6 @@ const mdbSelect = {
     	let options = this.options
     	var ids = this.chosedId
     	var tags = ids.filter( i => i == true ).map( (i,k) => options[k] )
-    	//console.log(tags)
     	
     	return tags.join(',')
     }
