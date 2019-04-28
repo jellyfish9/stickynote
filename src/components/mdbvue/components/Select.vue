@@ -13,13 +13,12 @@
 <script>
 import classNames from 'classnames'
 //import { mixin as clickaway } from 'vue-clickaway'
-import { SelectItem,Btn,mdbInput } from 'mdbvue'
+import { SelectItem,Btn } from 'mdbvue'
 
 const mdbSelect = {
   components: {
   	SelectItem,
   	Btn,
-  	mdbInput
   },
   props: {
     tag: {

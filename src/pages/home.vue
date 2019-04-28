@@ -24,12 +24,11 @@
   </mdb-navbar>
   
   <mdb-list-group>
-  		<mdb-nav-item v-for="n in notes" class="list-group-item list-group-item-action" :to="'/note/'+n.id">
+  		<mdb-nav-item v-for="(n,i) in notes" class="list-group-item list-group-item-action" :to="'/note/'+n.id">
           <h5 class="text-center">
             {{n.note}}
           </h5>
         </mdb-nav-item>
-        <!-- <mdb-nav-item to="/tabs" waves-fixed>tabs</mdb-nav-item>-->
         
   </mdb-list-group>
 </mdb-container>
