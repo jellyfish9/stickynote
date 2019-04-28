@@ -1,7 +1,7 @@
 <template>
   <component :is="tag" class="select-wrapper mdb-select md-form">
   <i v-if="icon" :class="'fas prefix fa-' + icon"/>
-  <input type="text" :class="inputClassName" @click="toggleUl" ref="input"/>
+  <input type="text" :class="inputClassName" @click.prevent="toggleUl" ref="input"/>
   <ul :class="className">
   	<select-item :selectAll="true" @change="checkAll">全选</select-item>
   	<select-item v-for="(item, index) in options" @change="changeTag($event, index)">{{item}}</select-item>
