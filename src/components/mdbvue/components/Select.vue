@@ -77,8 +77,9 @@ const mdbSelect = {
     },
     checkAll(active) {
     	var lis = this.$el.lastElementChild.querySelectorAll('li')
+    	lis = lis.slice(1)
     	let len = lis.length
-    	for (let i=1; i<len-1; i++) {
+    	for (let i=0; i<len-1; i++) {
     		let input = lis[i].querySelector('input')
     		if (active != input.checked) {
     			lis[i].click()
