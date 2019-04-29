@@ -70,6 +70,7 @@ const mdbSelect = {
     choose() {
      this.toggleUl()
      this.$refs.input.value = this.chosed
+     this.$emit('change', this.chosed)
      // 填充chosed
     },
     changeTag(active, index) {

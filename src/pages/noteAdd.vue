@@ -11,10 +11,9 @@
   <div class="mt-5">
     
     <div class="grey-text">
-      <mdb-textarea id="note" :rows="4" label="笔记" icon="pencil-alt"/>
-      <mdb-textarea :rows="4" label="备注" icon="map-pin"/>
-	  <!--<mdb-select multiple selectAll @getValue="getSelectValue" :options="countries" />-->
-	  <mdb-select :options="tags" :up="true" icon="tag" inputClass="w-50"></mdb-select>
+      <mdb-textarea @change="edit($event, 'note')" :rows="4" label="笔记" icon="pencil-alt"/>
+      <mdb-textarea @change="edit($event, 'mark')" :rows="4" label="备注" icon="map-pin"/>
+	  <mdb-select :options="tags" :up="true" icon="tag" inputClass="w-50" @change="edit($event, 'tag')"></mdb-select>
     </div>
     <div class="text-center">
       <mdb-btn outline="secondary" @click="save">保存</mdb-btn>
@@ -45,26 +44,23 @@ export default {
   data() {
     return {
       tags: [],
+      editObj: {}
     };
   },
   created() {
-  	//this.tags = JSON.parse(sessionStorage.getItem('tags'))
-  	this.tags = ['linux','vue','php']
+  	this.tags = JSON.parse(sessionStorage.getItem('tags'))
+  	//this.tags = ['linux','vue','php']
   },
   methods:{
   	save(e){
   		
-  		var tag = $('#tag').val()
-  		let data = {tag, note: $('#note').val(), mark: $('textarea').first().val()}
+  		//var tag = this.selectVal
+  		let data = this.editObj
 		$.ajaxSettings.crossDomain = true
-		/*
-			//headers: {Origin: 'http://note.coolhand.vip'}
-			crossDomain: true
-		}*/
 		$.ajax({
 		  type: 'POST',
 		  url: config.API+'note_add',
-		  data: data,
+		  data,
 		  success: function(res) {
 		  	Vue.toasted.show(res, {
 		        icon : {
@@ -74,13 +70,12 @@ export default {
 			})
 			sessionStorage.removeItem('note_list')
 		}
-
 		})
-		/*
-  		$.post('http://note.io/note_add', data, function(res) {
-  			console.log(res)
-  		})*/
-  	}
+    },
+    
+    edit(value, field) {
+      this.editObj[field] = value
+    }
   }
 }
 
